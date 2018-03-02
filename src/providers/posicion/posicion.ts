@@ -42,7 +42,7 @@ export class PosicionProvider {
 
   getLocalidad() {
     return this.getPosicion ().then (data => {      
-      console.log (data);
+      //console.log (data);
       let lat = 43.3757547;
       let long = -5.8274826;
       return this.http.get (`${this.url}?latlng=${data.coords.latitude},${data.coords.longitude}&key=${this.key}`)       
