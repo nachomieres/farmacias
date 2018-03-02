@@ -1,14 +1,34 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="primary">
     <ion-title>
-      Ionic Blank
+      Farmacias de Guardia
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content
+          pullingIcon="arrow-dropdown"
+          pullingText="Desliza para actuarizar..."
+          refreshingSpinner="circles"
+          refreshingText="actualuzando...">
+        </ion-refresher-content>
+      </ion-refresher>
+
+  <p *ngIf="poblacion">{{poblacion}}</p>
+  <h3 text-center *ngIf="localidad">{{localidad}}</h3>
+  <h4 text-center *ngIf="fechaGuardia">{{fechaGuardia}}</h4>
+  <ion-card *ngFor="let farmacia of listaFarmacias">
+    <ion-card-header text-center text-wrap>
+        {{farmacia.nombre}}
+    </ion-card-header>
+    <ion-card-content (click)="alMapa(farmacia.direccion)">
+      <h3 text-center>{{farmacia.direccion}}</h3>
+      <h4 text-center>{{farmacia.telefono}}</h4>
+    </ion-card-content>   
+  </ion-card>
+  <ion-fab right bottom>
+    <button ion-fab [hidden]="botonMapa" color="primary" (click)="alMapaRes()"><ion-icon name="map"></ion-icon></button>
+  </ion-fab>
 </ion-content>
