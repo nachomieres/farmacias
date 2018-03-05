@@ -90,6 +90,7 @@ export class MapaResultadosPage {
       animation: google.maps.Animation.DROP,
       position: latLng,  
       icon: 'https://bioplusrx.com/wp-content/uploads/2016/08/cropped-icon-32x32.png'
+      //icon: 'http://www.farmasturias.org/gescof/fijos/img/cruz.gif'
     }); 
     let infoWindow = new google.maps.InfoWindow({
       content: `<h4>${nombre}</h4>`
